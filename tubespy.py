@@ -7,14 +7,14 @@ import time
 import os
 
 if '__main__' == __name__:
-	os.system('mn -c')
-	setLogLevel('info')
-	net = Mininet(link=TCLink)
-	key = "net.mptcp.mptcp_enabled"
-	value = 0
-	p = Popen("sysctl -w %s=%s" %(key,value), shell=True, stdout=PIPE, stderr=PIPE)
-	stdout, stderr = p.communicate()
-	print("stdout=",stdout,"stderr=",stderr)
+    os.system('mn -c')
+    setLogLevel('info')
+    net = Mininet(link=TCLink)
+    key = "net.mptcp.mptcp_enabled"
+    value = 0
+    p = Popen("sysctl -w %s=%s" %(key,value), shell=True, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = p.communicate()
+    print("stdout=",stdout,"stderr=",stderr)
 
     #BUILD TOPOLOGY
     #ADD HOST
@@ -34,7 +34,7 @@ if '__main__' == __name__:
     
     #MENGHUBUNGKAN ANTAR DEVICE
     #Add link 
-	net.addLink(HostA, R1, intfName1='HostA-eth0', intfName2='R1-eth0', cls=TCLink, **bwA)
+    net.addLink(HostA, R1, intfName1='HostA-eth0', intfName2='R1-eth0', cls=TCLink, **bwA)
     net.addLink(HostA, R2, intfName1='HostA-eth1', intfName2='R2-eth1', cls=TCLink, **bwA)
 
     net.addLink(R1, R3, intfName1='R1-eth1', intfName2='R3-eth1', cls=TCLink, **bwB)
